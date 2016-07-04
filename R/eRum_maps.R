@@ -14,7 +14,6 @@ poznan <- cities[cities$City == 'Poznań', ]
 cities_rest <- cities[!(cities$City == 'Poznań'), ]
 
 cities_all <- cbind(cities_rest, poznan)
-names(cities_all) <- c('City', 'count', 'lon', 'lat', 'Poznan', 'Poznan_count', 'Poznan_lon', 'Poznan_lat')
 
 # static point map
 p <- ggmap(get_map('Poznań', zoom = 4)) +
@@ -42,12 +41,13 @@ for (i in seq_along(cities_all_lines)) {
 lines_to_poznan <- SpatialLines(cities_all_lines)
 lines_to_poznan <- SpatialLinesDataFrame(lines_to_poznan, cities_rest, match.ID = FALSE)
 
+names(cities_all) <- c('City', 'count', 'lon', 'lat', 'Poznan', 'Poznan_count', 'Poznan_lon', 'Poznan_lat')
 # static line map
-p <- ggmap(get_map('Poznań', zoom = 4)) +
+p2 <- ggmap(get_map('Poznań', zoom = 4)) +
         geom_point(data = cities_rest, aes(x = lon, y = lat), color = "red", size = 1, shape = 3) +
         geom_point(data = poznan, aes(x = lon, y = lat), color = "blue", size = 4, shape = 18) + 
         geom_leg(data = cities_all, aes(x = lon, y = lat, xend = Poznan_lon, yend = Poznan_lat), color= 'blue')
-p 
+p2 
 
 # inteactive line map
 leaflet() %>% addPolylines(data=lines_to_poznan, weight=sqrt(lines_to_poznan$count)+1) %>%
