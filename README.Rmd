@@ -22,8 +22,10 @@ knitr::opts_chunk$set(
 
 ![](maps/maps001.png)
 
-<iframe src="maps/maps002.html"></iframe>
+<iframe src="https://rawgit.com/pbiecek/Maps/master/maps/maps002.html"></iframe>
 
+![](maps/maps003.png)
 
+<iframe src="https://rawgit.com/pbiecek/Maps/master/maps/maps004.html"></iframe>
 
 
