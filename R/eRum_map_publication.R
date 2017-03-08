@@ -39,7 +39,7 @@ p <- ggmap(poz_map) +
         geom_point(data = cities_rest, aes(x = lon, y = lat), color = "black", size = 1, shape = 1) +
         geom_segment(data = cities_all, aes(x = lon, y = lat, xend = Poznan_lon, yend = Poznan_lat), size = 0.2, color = '#472b29') + 
         geom_point(data = poznan, aes(x = lon, y = lat), color = "black", size = 4, shape = 19) + 
-        coord_map()
+        labs(x='Lon', y='Lat')
 p
 
-ggsave(p)
+ggsave(p, file='maps/erum_map.pdf', height = 6.5, width = 6.5)
